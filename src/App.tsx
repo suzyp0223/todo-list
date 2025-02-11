@@ -54,13 +54,30 @@ function App() {
     setTodos(newTodos);
   };
 
+  const handleToggleAllClick = () => {
+    const isAllChecked = todos.every(todo => todo.isChecked);
+
+    const newTodos = todos.map(todo => {
+      return {
+        ...todo,
+        isChecked: !isAllChecked
+      }
+    })
+
+    setTodos(newTodos);
+  }
+
+  const handleRemoveAllClick = () => {
+    setTodos([]);
+  }
+
 
   return (
     <main className="App">
       <TodoHeader count={todos.filter(todo => !todo.isChecked).length} />
       <TodoInput text={text} onTextChange={handleTextChange} onSubmit={handleSubmit} />
       <TodoListArea todoCount={todos.length}>
-        <TodoListTools />
+        <TodoListTools onRemoveAllClick={handleRemoveAllClick} onToggleAllClick={handleToggleAllClick} />
         <Divider />
         <TodoList todos={todos} onRemoveClick={handleRemove} onToggleClick={handleToggle} />
 
