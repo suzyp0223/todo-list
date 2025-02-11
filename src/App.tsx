@@ -34,7 +34,11 @@ function App() {
   };
 
   const handleRemove = (id: number) => {
+    const newTodos = todos.filter(todo => {
+      return todo.id !== id;
+    });
 
+    setTodos(newTodos);
   };
 
   const handleToggle = (id: number) => {
@@ -49,7 +53,7 @@ function App() {
     })
     setTodos(newTodos);
   };
-  
+
 
   return (
     <main className="App">
