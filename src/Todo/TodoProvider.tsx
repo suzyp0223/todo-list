@@ -1,4 +1,4 @@
-import { createContext, Dispatch, ReactNode, Reducer, useContext, useReducer } from 'react';
+import { createContext, Dispatch, ReactNode, useContext, useReducer } from 'react';
 import { TodoInputActionType, todoInputReducer, TodoInputStateType } from './todoInputReducer';
 import { TodoActionType, todoReducer, TodoStateType } from './todoReducer';
 
@@ -22,9 +22,9 @@ const TodoProvider = (props: TodoProviderProps) => {
     <TodoStateContext.Provider value={todoState}>
       <TodoDispatchContext.Provider value={todoDispatch}>
         <InputTodoContext.Provider value={inputState}>
-          <InputTodoDispatchContext value={inputDispatch}>
+          <InputTodoDispatchContext.Provider value={inputDispatch}>
             {props.children}
-          </InputTodoDispatchContext>
+          </InputTodoDispatchContext.Provider>
         </InputTodoContext.Provider>
       </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
@@ -36,6 +36,7 @@ export const useTodoState = () => {
   if (!value) {
     throw new Error('cannot find todoState');
   }
+  return value;
 };
 
 export const useTodoDispatch = () => {
@@ -43,6 +44,7 @@ export const useTodoDispatch = () => {
   if (!value) {
     throw new Error('cannot find todoDispatch');
   }
+  return value;
 };
 
 export const useInputTodoState = () => {
@@ -50,6 +52,7 @@ export const useInputTodoState = () => {
   if (!value) {
     throw new Error('cannot find inputTodo');
   }
+  return value;
 };
 
 export const useInputTodoDispatch = () => {
@@ -57,6 +60,7 @@ export const useInputTodoDispatch = () => {
   if (!value) {
     throw new Error('cannot find InputTodoDispatch');
   }
+  return value;
 };
 
 export default TodoProvider;

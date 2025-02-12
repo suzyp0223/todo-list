@@ -8,12 +8,10 @@ const TodoInput = () => {
   const inputDispatch = useInputTodoDispatch();
   const inputState = useInputTodoState();
 
-
   const handleInputChanged = (event: ChangeEvent<HTMLInputElement>) => {
     inputDispatch({
       type: 'change', payload: event.target.value
-    })
-
+    });
   };
 
   const handleSubmit = (event: FormEvent) => {
@@ -25,26 +23,29 @@ const TodoInput = () => {
 
     todoDispatch({
       type: 'add',
-      payload:
-        { text: inputState.text }
-    })
+      payload: { text: inputState.text }
+    });
 
     inputDispatch({
       type: 'clear'
-    })
-
+    });
   };
 
   return (
     <section className={style.container}>
       <form className={style.formContainer} onSubmit={handleSubmit}>
-        <input className={style.input} placeholder={'해야 할 Todo'}
+        <input
+          className={style.input}
+          placeholder={'해야 할 Todo'}
           value={inputState.text}
-          onChange={handleInputChanged} />
-        <button type="submit" className={style.enter}><RiChatNewLine /></button>
+          onChange={handleInputChanged}
+        />
+        <button type="submit" className={style.enter}>
+          <RiChatNewLine />
+        </button>
       </form>
     </section>
-  )
+  );
 };
 
 export default TodoInput;

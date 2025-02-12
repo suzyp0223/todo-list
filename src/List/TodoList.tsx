@@ -12,16 +12,16 @@ const TodoList = () => {
         {
           todoState.todos.map((todo: TodoType) => {
             return <TodoItem
-          id={todo.id}
-          key={todo.id}
-          text={todo.text}
-          isChecked={todo.isChecked}
-        />
+              id={todo.id}
+              key={todo.id}
+              text={todo.text}
+              isChecked={todo.isChecked}
+            />
           })
         }
       </ol>
     </section>
-  )
+  );
 };
 
 export default TodoList;
