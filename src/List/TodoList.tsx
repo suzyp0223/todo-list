@@ -1,5 +1,5 @@
 import style from './TodoList.module.css';
-import { TodoType } from '../App';
+import { TodoType } from '../Todo/todoReducer';
 import TodoItem from '../ListItem/TodoItem';
 
 interface TodoListProps {
@@ -9,7 +9,6 @@ interface TodoListProps {
 }
 
 const TodoList = (props: TodoListProps) => {
-  const arr = ['React', 'Typescript', 'Javascript', 'HTML', 'CSS'];
   return (
     <section>
       <ol className={style.olContainer}>
